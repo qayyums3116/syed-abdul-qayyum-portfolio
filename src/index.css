@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Professional Portfolio Design System for Syed Abdul Qayyum
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Core Brand Colors */
+    --background: 220 26% 4%;
+    --foreground: 210 40% 98%;
+    
+    /* Surface Colors */
+    --card: 220 26% 6%;
+    --card-foreground: 210 40% 98%;
+    
+    --popover: 220 26% 8%;
+    --popover-foreground: 210 40% 98%;
+    
+    /* Brand Identity */
+    --primary: 217 91% 60%;
+    --primary-foreground: 220 26% 4%;
+    --primary-glow: 217 91% 70%;
+    
+    --secondary: 220 26% 12%;
+    --secondary-foreground: 210 40% 98%;
+    
+    --muted: 220 26% 10%;
+    --muted-foreground: 215 20% 65%;
+    
+    --accent: 142 76% 36%;
+    --accent-foreground: 210 40% 98%;
+    --accent-glow: 142 76% 46%;
+    
+    /* Status Colors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    
+    --warning: 38 92% 50%;
+    --warning-foreground: 220 26% 4%;
+    
+    --success: 142 76% 36%;
+    --success-foreground: 210 40% 98%;
+    
+    /* Interface Elements */
+    --border: 220 26% 18%;
+    --input: 220 26% 12%;
+    --ring: 217 91% 60%;
+    
+    --radius: 0.75rem;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(217 91% 70%));
+    --gradient-accent: linear-gradient(135deg, hsl(142 76% 36%), hsl(142 76% 46%));
+    --gradient-hero: linear-gradient(135deg, hsl(220 26% 4%) 0%, hsl(217 91% 8%) 100%);
+    --gradient-surface: linear-gradient(145deg, hsl(220 26% 6%), hsl(220 26% 8%));
+    
+    /* Shadows */
+    --shadow-primary: 0 0 30px hsl(217 91% 60% / 0.3);
+    --shadow-accent: 0 0 30px hsl(142 76% 36% / 0.3);
+    --shadow-glow: 0 0 50px hsl(217 91% 70% / 0.2);
+    --shadow-card: 0 10px 30px -10px hsl(220 26% 2% / 0.8);
+    --shadow-elevated: 0 20px 40px -10px hsl(220 26% 2% / 0.9);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-inter antialiased;
+    background: var(--gradient-hero);
+    background-attachment: fixed;
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+  }
+
+  img,
+  video,
+  canvas,
+  iframe {
+    max-width: 100%;
+  }
+  
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-muted;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary-glow;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@layer components {
+  /* Glass Effect */
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Glow Effects */
+  .glow-primary {
+    box-shadow: var(--shadow-primary);
+  }
+  
+  .glow-accent {
+    box-shadow: var(--shadow-accent);
+  }
+  
+  .glow-soft {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  /* Interactive Elements */
+  .interactive {
+    transition: var(--transition-smooth);
+  }
+  
+  .interactive:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-elevated);
+  }
+  
+  /* Hero Text */
+  .hero-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Floating Animation */
+  .float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+  
+  /* Pulse Glow */
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite alternate;
+  }
+  
+  @keyframes pulse-glow {
+    from { box-shadow: var(--shadow-primary); }
+    to { box-shadow: var(--shadow-glow); }
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
