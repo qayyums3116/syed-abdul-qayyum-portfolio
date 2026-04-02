@@ -128,7 +128,7 @@ const Hero = () => {
                 <div className="rounded-2xl sm:rounded-3xl overflow-hidden glow-primary">
                   <img
                     src="/Home.jpg"
-                    alt="Syed Abdul Qayyum - Frontend Developer"
+                    alt="Syed Abdul Qayyum - Junior Full Stack Developer & AI Automation Enthusiast"
                     className="w-full h-auto object-contain"
                   />
                 </div>
