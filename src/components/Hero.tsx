@@ -45,10 +45,10 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight"
+              className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 leading-tight whitespace-nowrap"
             >
-              <span className="hero-text block">Syed Abdul</span>
-              <span className="text-foreground block">Qayyum</span>
+              <span className="hero-text">Syed Abdul</span>{' '}
+              <span className="text-foreground">Qayyum</span>
             </motion.h1>
 
             <motion.h2
@@ -57,7 +57,7 @@ const Hero = () => {
               transition={{ delay: 0.4 }}
               className="text-sm xs:text-base sm:text-lg lg:text-xl font-semibold text-accent mb-4 sm:mb-6 leading-relaxed px-2 sm:px-0"
             >
-              Junior Full Stack Developer | AI Automation Enthusiast | Building Scalable React.js, Next.js, Django & FastAPI Solutions
+              Full Stack Developer | AI Automation & Digital Marketing Engineer | UI/UX Designer | Turning Figma Designs into Scalable Next.js & React.js Apps | Automating Workflows & Digital Growth with n8n, Make.com & SEO
             </motion.h2>
 
             <motion.p
@@ -66,9 +66,10 @@ const Hero = () => {
               transition={{ delay: 0.5 }}
               className="text-xs xs:text-sm sm:text-base lg:text-lg text-muted-foreground mb-6 sm:mb-8 max-w-2xl mx-auto lg:mx-0 px-2 sm:px-0"
             >
-              I design and develop responsive full-stack applications, craft
-              intuitive UI/UX experiences, and build AI-powered automation
-              workflows using n8n and Make.com to improve productivity.
+              Full Stack Developer, AI Automation Specialist & UI/UX Designer with
+              2+ years building scalable React.js, Next.js & TypeScript apps —
+              automating workflows with n8n & Make.com and driving digital growth
+              through SEO, Google Ads & a customized CRM.
             </motion.p>
 
             {/* Call to Action Buttons */}
@@ -118,37 +119,31 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative flex justify-center lg:justify-end w-full mt-6 lg:mt-0"
           >
-            <div className="relative w-full max-w-xs xs:max-w-sm sm:max-w-md lg:max-w-lg">
+            <div className="relative w-full max-w-[260px] xs:max-w-xs sm:max-w-sm lg:max-w-md">
               <motion.div
-                animate={{ y: [0, -20, 0] }}
+                animate={{ y: [0, -16, 0] }}
                 transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
                 className="relative"
               >
-                {/* Responsive Image Frame */}
-                <div className="rounded-2xl sm:rounded-3xl overflow-hidden glow-primary">
-                  <img
-                    src="/Home.jpg"
-                    alt="Syed Abdul Qayyum - Junior Full Stack Developer & AI Automation Enthusiast"
-                    className="w-full h-auto object-contain"
-                  />
-                </div>
-
-                {/* Floating Elements */}
+                {/* Rotating gradient glow behind the frame */}
                 <motion.div
                   animate={{ rotate: 360 }}
-                  transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-                  className="absolute -top-2 -right-2 xs:-top-3 xs:-right-3 sm:-top-4 sm:-right-4 w-10 h-10 xs:w-12 xs:h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-primary rounded-full flex items-center justify-center glow-primary"
-                >
-                  <span className="text-base xs:text-lg sm:text-xl lg:text-2xl">⚛️</span>
-                </motion.div>
+                  transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
+                  className="absolute -inset-3 sm:-inset-4 rounded-full bg-gradient-to-tr from-primary via-accent to-primary opacity-60 blur-xl"
+                />
 
-                <motion.div
-                  animate={{ rotate: -360 }}
-                  transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
-                  className="absolute -bottom-2 -left-2 xs:-bottom-3 xs:-left-3 sm:-bottom-4 sm:-left-4 w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12 bg-gradient-accent rounded-full flex items-center justify-center glow-accent"
-                >
-                  <span className="text-sm xs:text-base sm:text-lg lg:text-xl">🎨</span>
-                </motion.div>
+                {/* Gradient ring border */}
+                <div className="relative aspect-square rounded-full p-[3px] sm:p-1 bg-gradient-to-br from-primary via-accent to-primary glow-primary">
+                  {/* Inner circle with soft radial backdrop so the dark suit stands out */}
+                  <div className="w-full h-full rounded-full overflow-hidden bg-[radial-gradient(circle_at_50%_28%,hsl(220_26%_15%),hsl(220_26%_6%))]">
+                    <img
+                      src="/profile-hero.png"
+                      alt="Syed Abdul Qayyum - Full Stack Developer, AI Automation Enthusiast & UI/UX Designer"
+                      className="w-full h-full object-cover object-top drop-shadow-2xl"
+                    />
+                  </div>
+                </div>
+
               </motion.div>
             </div>
           </motion.div>

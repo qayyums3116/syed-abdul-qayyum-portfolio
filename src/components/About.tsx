@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion';
-import { Code, Palette, TestTube, Users, Zap, Brain } from 'lucide-react';
+import { Code, Palette, TestTube, Users, Zap, Brain, TrendingUp } from 'lucide-react';
 
 const About = () => {
   return (
     <section id="about" className="py-10 sm:py-14 md:py-20 relative">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] gap-8 lg:gap-10 items-center">
           {/* Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -19,32 +19,52 @@ const About = () => {
             
             <div className="space-y-4 sm:space-y-5 text-sm xs:text-base sm:text-lg text-muted-foreground">
               <p>
-                I am a results-driven <span className="text-primary font-semibold">Junior Full Stack Developer</span> and
-                <span className="text-accent font-semibold"> AI Automation Enthusiast</span> with 2+ years of
-                professional experience building scalable and responsive web applications using
-                <span className="text-primary font-semibold"> React.js</span>, 
-                <span className="text-primary font-semibold"> Next.js</span>, 
-                <span className="text-accent font-semibold"> TypeScript</span>,
-                <span className="text-accent font-semibold"> Django</span>, and
+                I am a results-driven <span className="text-primary font-semibold">Full Stack Developer</span>,
+                <span className="text-accent font-semibold"> AI Automation Specialist</span>, and
+                <span className="text-primary font-semibold"> UI/UX Designer</span> with over 2 years of
+                professional experience building scalable, responsive web applications using
+                <span className="text-primary font-semibold"> React.js</span>,
+                <span className="text-primary font-semibold"> Next.js</span>, and
+                <span className="text-accent font-semibold"> TypeScript</span>, with backend development in
+                <span className="text-accent font-semibold"> Django</span> and
                 <span className="text-accent font-semibold"> FastAPI</span>.
               </p>
-              
+
+              <p>
+                Currently at <span className="text-primary font-semibold">CodeSquad.LLC</span>, I develop and
+                maintain full-stack applications end to end — from database design in
+                <span className="text-accent font-semibold"> PostgreSQL</span> to deployment — while designing
+                and deploying intelligent automation workflows with
+                <span className="text-primary font-semibold"> n8n</span> and
+                <span className="text-primary font-semibold"> Make.com</span> to streamline business processes
+                and improve operational efficiency.
+              </p>
+
+              <p>
+                I also drive end-to-end <span className="text-primary font-semibold">digital growth</span> through
+                automation — executing <span className="text-accent font-semibold">SEO, AEO & GEO</span> strategies
+                alongside <span className="text-accent font-semibold">blog content</span>,
+                <span className="text-accent font-semibold"> social media</span>, and
+                <span className="text-accent font-semibold"> Google Ads</span> campaigns, tracked via
+                <span className="text-accent font-semibold"> Google Analytics</span> and orchestrated through a
+                customized <span className="text-primary font-semibold">CRM</span> that unifies marketing
+                workflows, client communication, and reporting.
+              </p>
+
               <p>
                 I bring strong <span className="text-primary font-semibold">UI/UX design</span> capability with
-                hands-on work in <span className="text-accent font-semibold">Figma</span>,
-                <span className="text-accent font-semibold"> Adobe XD</span>, wireframing, and prototyping, then
-                translating designs into pixel-perfect, production-ready interfaces.
+                hands-on work in <span className="text-accent font-semibold">Figma</span> and
+                <span className="text-accent font-semibold"> Adobe XD</span> — creating wireframes, user flows,
+                and prototypes, then translating them into pixel-perfect, production-ready interfaces. I also
+                integrate <span className="text-accent font-semibold">AI-driven workflows and LLM-based solutions</span> into
+                production applications.
               </p>
 
               <p>
-                I also design and deploy intelligent automation workflows using
-                <span className="text-primary font-semibold"> n8n</span> and
-                <span className="text-primary font-semibold"> Make.com</span>, integrating APIs and AI-driven
-                processes to reduce manual work and improve business productivity.
-              </p>
-
-              <p>
-                With a <span className="text-primary font-semibold">BSc in Information Engineering Technology (3.42 GPA)</span>,
+                I've also taught a 2-month <span className="text-primary font-semibold">AI Automation</span> course
+                and contributed to <span className="text-accent font-semibold">AI model training</span> through video
+                annotation. With a
+                <span className="text-primary font-semibold"> BSc in Information Engineering Technology (3.42 GPA)</span>,
                 I combine technical depth, design thinking, and automation expertise to deliver meaningful digital products.
               </p>
 
@@ -62,7 +82,7 @@ const About = () => {
             viewport={{ once: true }}
             className="relative mt-8 lg:mt-0"
           >
-            <div className="relative max-w-xs xs:max-w-sm sm:max-w-md mx-auto lg:mx-0">
+            <div className="relative max-w-xs xs:max-w-sm sm:max-w-md mx-auto lg:mr-0 lg:ml-auto">
               <motion.div
                 animate={{ rotate: [0, 5, -5, 0] }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
@@ -86,7 +106,7 @@ const About = () => {
                 className="absolute -top-2 -right-2 xs:-top-3 xs:-right-3 sm:-top-4 sm:-right-4 glass p-2 xs:p-3 sm:p-4 rounded-lg"
               >
                 <div className="text-center">
-                  <div className="text-lg xs:text-xl sm:text-2xl font-bold text-primary">1+</div>
+                  <div className="text-lg xs:text-xl sm:text-2xl font-bold text-primary">2+</div>
                   <div className="text-xs sm:text-sm text-muted-foreground">Years</div>
                 </div>
               </motion.div>
@@ -97,7 +117,7 @@ const About = () => {
                 className="absolute -bottom-2 -left-2 xs:-bottom-3 xs:-left-3 sm:-bottom-4 sm:-left-4 glass p-2 xs:p-3 sm:p-4 rounded-lg"
               >
                 <div className="text-center">
-                  <div className="text-lg xs:text-xl sm:text-2xl font-bold text-accent">15+</div>
+                  <div className="text-lg xs:text-xl sm:text-2xl font-bold text-accent">20+</div>
                   <div className="text-xs sm:text-sm text-muted-foreground">Projects</div>
                 </div>
               </motion.div>
@@ -142,6 +162,12 @@ const About = () => {
                 title: 'n8n AI Automation',
                 description: 'Designing business automations using n8n and Make.com with API and AI integrations.',
                 color: '#F59E0B'
+              },
+              {
+                icon: TrendingUp,
+                title: 'Digital Marketing & SEO',
+                description: 'Driving growth with SEO, AEO, GEO, Google Ads, and analytics through automated content and CRM workflows.',
+                color: '#EC4899'
               },
               {
                 icon: Users,

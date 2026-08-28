@@ -69,12 +69,12 @@ const Navigation = () => {
           >
             {/* Profile Picture */}
             <img
-              src="/Syed Abdul Qayyum.jpeg"
+              src="/profile-avatar.png"
               alt="Syed Abdul Qayyum"
               className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full object-cover border-2 border-primary shadow-md flex-shrink-0"
             />
             <div className="min-w-0">
-              <span className="text-sm sm:text-lg md:text-xl font-bold text-foreground hidden xs:block truncate">
+              <span className="text-sm sm:text-lg md:text-xl xl:text-base 2xl:text-xl font-bold text-foreground hidden xs:block truncate">
                 Syed Abdul Qayyum
               </span>
               <span className="text-sm sm:text-lg font-bold text-foreground block xs:hidden">
@@ -84,58 +84,32 @@ const Navigation = () => {
           </motion.div>
 
           {/* Desktop Navigation */}
-          <div className="hidden xl:flex items-center space-x-1">
+          <div className="hidden xl:flex items-center space-x-0.5 2xl:space-x-1">
             {navigationItems.map((item) => (
               <Button
                 key={item.id}
                 variant={activeSection === item.id ? 'default' : 'ghost'}
                 size="sm"
                 onClick={() => scrollToSection(item.id)}
-                className={`transition-all duration-300 text-xs xl:text-sm px-2 xl:px-3 ${
-                  activeSection === item.id 
-                    ? 'glow-primary' 
+                className={`transition-all duration-300 text-xs 2xl:text-sm px-2 2xl:px-3 ${
+                  activeSection === item.id
+                    ? 'glow-primary'
                     : 'hover:text-primary hover:bg-secondary'
                 }`}
               >
-                <item.icon className="w-3 h-3 xl:w-4 xl:h-4 mr-1 xl:mr-2" />
-                <span className="hidden xl:inline">{item.label}</span>
-                <span className="xl:hidden">{item.label.slice(0, 4)}</span>
+                <item.icon className="w-4 h-4 mr-1.5 2xl:mr-2 flex-shrink-0" />
+                <span>{item.label}</span>
               </Button>
             ))}
           </div>
 
-          {/* Tablet Navigation (md screens) */}
-          <div className="hidden md:flex xl:hidden items-center space-x-1">
-            {navigationItems.slice(0, 6).map((item) => (
-              <Button
-                key={item.id}
-                variant={activeSection === item.id ? 'default' : 'ghost'}
-                size="sm"
-                onClick={() => scrollToSection(item.id)}
-                className={`transition-all duration-300 text-xs px-2 ${
-                  activeSection === item.id 
-                    ? 'glow-primary' 
-                    : 'hover:text-primary hover:bg-secondary'
-                }`}
-              >
-                <item.icon className="w-3 h-3" />
-              </Button>
-            ))}
-            <Button
-              variant="ghost"
-              size="sm"
-              className="px-2"
-              onClick={() => setIsOpen(!isOpen)}
-            >
-              <Menu className="w-4 h-4" />
-            </Button>
-          </div>
-
-          {/* Mobile Menu Button */}
+          {/* Menu Button (everything below xl, incl. tablet) */}
           <Button
             variant="ghost"
             size="sm"
-            className="md:hidden p-2 min-w-[44px] min-h-[44px] flex items-center justify-center"
+            aria-label={isOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={isOpen}
+            className="xl:hidden p-2 min-w-[44px] min-h-[44px] flex items-center justify-center"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -152,7 +126,7 @@ const Navigation = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-background/80 backdrop-blur-sm z-40 md:hidden"
+              className="fixed inset-0 bg-background/80 backdrop-blur-sm z-40 xl:hidden"
               onClick={() => setIsOpen(false)}
             />
             
@@ -161,10 +135,10 @@ const Navigation = () => {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="fixed top-14 sm:top-16 left-0 right-0 z-50 md:hidden glass backdrop-blur-xl border-b border-border/20 max-h-[calc(100vh-4rem)] overflow-y-auto"
+              className="fixed top-14 sm:top-16 left-0 right-0 z-50 xl:hidden glass backdrop-blur-xl border-b border-border/20 max-h-[calc(100vh-4rem)] overflow-y-auto"
             >
               <div className="container mx-auto px-3 sm:px-4 py-4 sm:py-6">
-                <div className="grid grid-cols-1 gap-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {navigationItems.map((item, index) => (
                     <motion.div
                       key={item.id}

@@ -1,55 +1,73 @@
 export interface Skill {
   name: string;
   level: number; // 1-100
-  category: 'frontend' | 'design' | 'tools' | 'other';
+  category: 'frontend' | 'backend' | 'ai' | 'design' | 'marketing' | 'tools';
   icon?: string;
 }
 
 export const skills: Skill[] = [
-  // Frontend Development
-  { name: 'HTML5', level: 95, category: 'frontend', icon: '🌐' },
-  { name: 'CSS3', level: 92, category: 'frontend', icon: '🎨' },
-  { name: 'JavaScript', level: 88, category: 'frontend', icon: '⚡' },
+  // Frontend (resume sequence)
   { name: 'React.js', level: 90, category: 'frontend', icon: '⚛️' },
+  { name: 'Next.js', level: 82, category: 'frontend', icon: '▲' },
+  { name: 'TypeScript', level: 80, category: 'frontend', icon: '📘' },
+  { name: 'JavaScript', level: 88, category: 'frontend', icon: '⚡' },
   { name: 'Vite', level: 85, category: 'frontend', icon: '⚡' },
   { name: 'Tailwind CSS', level: 93, category: 'frontend', icon: '💨' },
-  { name: 'Bootstrap', level: 87, category: 'frontend', icon: '🅱️' },
-  { name: 'TypeScript', level: 80, category: 'frontend', icon: '📘' },
-  { name: 'Next.js', level: 82, category: 'frontend', icon: '▲' },
   { name: 'Shadcn/UI', level: 80, category: 'frontend', icon: '🧩' },
   { name: 'Material UI', level: 78, category: 'frontend', icon: '🎛️' },
-  
-  // Design Tools
+  { name: 'Bootstrap', level: 87, category: 'frontend', icon: '🅱️' },
+  { name: 'HTML5', level: 95, category: 'frontend', icon: '🌐' },
+  { name: 'CSS3', level: 92, category: 'frontend', icon: '🎨' },
+
+  // Backend (resume sequence)
+  { name: 'Django', level: 80, category: 'backend', icon: '🐍' },
+  { name: 'FastAPI', level: 80, category: 'backend', icon: '⚡' },
+  { name: 'NestJS', level: 75, category: 'backend', icon: '🪺' },
+  { name: 'Node.js', level: 80, category: 'backend', icon: '🟢' },
+  { name: 'Python', level: 85, category: 'backend', icon: '🐍' },
+  { name: 'C++', level: 72, category: 'backend', icon: '➕' },
+  { name: 'RESTful APIs', level: 84, category: 'backend', icon: '🔌' },
+  { name: 'PostgreSQL', level: 80, category: 'backend', icon: '🐘' },
+  { name: 'Database Migration', level: 78, category: 'backend', icon: '🗃️' },
+
+  // AI & Automation (resume sequence)
+  { name: 'n8n Workflow Automation', level: 90, category: 'ai', icon: '🔄' },
+  { name: 'Make.com', level: 86, category: 'ai', icon: '🛠️' },
+  { name: 'Prompt Engineering', level: 82, category: 'ai', icon: '💬' },
+  { name: 'LLM Integration', level: 80, category: 'ai', icon: '🤖' },
+  { name: 'AI Data Annotation', level: 85, category: 'ai', icon: '🏷️' },
+  { name: 'Generative AI', level: 82, category: 'ai', icon: '✨' },
+  { name: 'AI-Assisted Development', level: 86, category: 'ai', icon: '🧠' },
+  { name: 'Marketing Automation', level: 88, category: 'ai', icon: '⚙️' },
+  { name: 'CRM Workflow Automation', level: 85, category: 'ai', icon: '🗂️' },
+
+  // UI/UX & Design (resume sequence)
   { name: 'Figma', level: 92, category: 'design', icon: '🎨' },
   { name: 'Adobe XD', level: 85, category: 'design', icon: '🎨' },
-  { name: 'UI/UX Design', level: 88, category: 'design', icon: '✨' },
+  { name: 'Wireframing', level: 86, category: 'design', icon: '📐' },
   { name: 'Prototyping', level: 85, category: 'design', icon: '🔄' },
-  
-  // Tools & Technologies
+  { name: 'User Interface Design', level: 88, category: 'design', icon: '🖌️' },
+  { name: 'User Experience Optimization', level: 84, category: 'design', icon: '✨' },
+  { name: 'Responsive Design', level: 92, category: 'design', icon: '📱' },
+
+  // Digital Marketing & SEO (resume sequence)
+  { name: 'SEO', level: 88, category: 'marketing', icon: '🔎' },
+  { name: 'AEO', level: 82, category: 'marketing', icon: '🤖' },
+  { name: 'GEO', level: 80, category: 'marketing', icon: '🌍' },
+  { name: 'Google Ads Management', level: 84, category: 'marketing', icon: '📢' },
+  { name: 'Google Analytics', level: 85, category: 'marketing', icon: '📊' },
+  { name: 'Social Media Content', level: 86, category: 'marketing', icon: '📱' },
+  { name: 'Blog Content Strategy', level: 84, category: 'marketing', icon: '✍️' },
+  { name: 'Automated Content Workflows', level: 86, category: 'marketing', icon: '🔁' },
+  { name: 'CRM Management', level: 85, category: 'marketing', icon: '🗂️' },
+
+  // Tools & DevOps (resume sequence)
   { name: 'Git', level: 90, category: 'tools', icon: '📝' },
   { name: 'GitHub', level: 92, category: 'tools', icon: '🐙' },
-  { name: 'VS Code', level: 95, category: 'tools', icon: '💻' },
-  { name: 'npm/yarn', level: 88, category: 'tools', icon: '📦' },
   { name: 'Postman', level: 84, category: 'tools', icon: '📮' },
   { name: 'Vercel', level: 84, category: 'tools', icon: '▲' },
   { name: 'Netlify', level: 88, category: 'tools', icon: '🌐' },
   { name: 'pgAdmin', level: 76, category: 'tools', icon: '🐘' },
-  
-  // Other Skills
-  { name: 'Project Management', level: 90, category: 'other', icon: '📋' },
-  { name: 'QA Testing', level: 82, category: 'other', icon: '🔍' },
-  { name: 'Django', level: 80, category: 'other', icon: '🐍' },
-  { name: 'FastAPI', level: 80, category: 'other', icon: '⚡' },
-  { name: 'NestJS', level: 75, category: 'other', icon: '🪺' },
-  { name: 'Node.js', level: 80, category: 'other', icon: '🟢' },
-  { name: 'PostgreSQL', level: 80, category: 'other', icon: '🐘' },
-  { name: 'AI Workflow Automation (n8n)', level: 90, category: 'other', icon: '🔄' },
-  { name: 'Make.com Automation', level: 86, category: 'other', icon: '🛠️' },
-  { name: 'LLM Integration', level: 80, category: 'other', icon: '🤖' },
-  { name: 'Prompt Engineering', level: 82, category: 'other', icon: '💬' },
-  { name: 'AI Data Annotation', level: 85, category: 'other', icon: '🏷️' },
-  { name: 'RESTful APIs', level: 84, category: 'other', icon: '🔌' },
-  { name: 'Robotics Task Analysis', level: 78, category: 'other', icon: '🦾' },
 ];
 
 export const getSkillsByCategory = (category: string) => {

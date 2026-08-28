@@ -119,7 +119,7 @@ const Experience = () => {
                           Key Responsibilities
                         </h4>
                         <ul className="space-y-1">
-                          {experience.responsibilities.slice(0, 3).map((responsibility, idx) => (
+                          {experience.responsibilities.map((responsibility, idx) => (
                             <li key={idx} className="text-xs sm:text-sm text-muted-foreground flex items-start">
                               <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-accent mt-1.5 sm:mt-2 mr-1.5 sm:mr-2 flex-shrink-0"></span>
                               <span>{responsibility}</span>

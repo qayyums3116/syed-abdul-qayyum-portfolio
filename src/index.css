@@ -185,7 +185,7 @@ All colors MUST be HSL.
   .pulse-glow {
     animation: pulse-glow 2s ease-in-out infinite alternate;
   }
-  
+
   @keyframes pulse-glow {
     from { box-shadow: var(--shadow-primary); }
     to { box-shadow: var(--shadow-glow); }

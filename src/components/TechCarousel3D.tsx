@@ -1,83 +1,86 @@
-import { Canvas, useFrame, useLoader } from '@react-three/fiber';
-import { Float, Text } from '@react-three/drei';
-import { Suspense, useRef } from 'react';
 import { motion } from 'framer-motion';
-import * as THREE from 'three';
 
-const TechLogo = ({ logo, name, index }: { 
-  logo: string, 
-  name: string,
-  index: number 
+interface Tech {
+  name: string;
+  logo: string;
+}
+
+// Every logo (root icons + everything from the /Logos folder)
+const technologies: Tech[] = [
+  { name: 'React', logo: '/React.png' },
+  { name: 'Next.js', logo: '/Logos/Frontend/nextjs-white.png' },
+  { name: 'TypeScript', logo: '/Logos/Frontend/Typescript.webp' },
+  { name: 'JavaScript', logo: '/Javascript.png' },
+  { name: 'HTML5', logo: '/HTML.png' },
+  { name: 'CSS3', logo: '/CSS.png' },
+  { name: 'Tailwind', logo: '/Tailwind.png' },
+  { name: 'Vite', logo: '/vite.png' },
+  { name: 'Python', logo: '/Logos/Backend/Python.png' },
+  { name: 'Django', logo: '/Logos/Backend/Django.png' },
+  { name: 'Node.js', logo: '/Logos/Backend/nodejs_original_wordmark_logo_icon_146412.webp' },
+  { name: 'PostgreSQL', logo: '/Logos/Backend/Postgress.webp' },
+  { name: 'n8n', logo: '/Logos/AI_Automation/n8n-logo-png.png' },
+  { name: 'Make.com', logo: '/Logos/AI_Automation/Make-com-Logo.png' },
+  { name: 'Figma', logo: '/Figma.png' },
+  { name: 'Adobe XD', logo: '/Logos/Design/Adobe%20XD.png' },
+  { name: 'Git', logo: '/git.png' },
+  { name: 'GitHub', logo: '/Logos/DevOps/GitHub.png' },
+  { name: 'Vercel', logo: '/Logos/DevOps/Vercel.png' },
+  { name: 'AWS', logo: '/Logos/DevOps/Aws.webp' },
+];
+
+const TechCard = ({ tech }: { tech: Tech }) => (
+  <div className="group flex-shrink-0 mr-4 sm:mr-5">
+    <div className="glass rounded-2xl px-5 sm:px-7 py-4 sm:py-5 flex flex-col items-center justify-center gap-2 sm:gap-3 w-[120px] sm:w-[150px] transition-all duration-300 group-hover:-translate-y-1 group-hover:border-primary/40 group-hover:shadow-[0_10px_30px_-10px_hsl(217_91%_60%/0.45)]">
+      <img
+        src={tech.logo}
+        alt={tech.name}
+        loading="lazy"
+        className="w-11 h-11 sm:w-14 sm:h-14 object-contain transition-transform duration-300 group-hover:scale-110"
+      />
+      <span className="font-semibold text-xs sm:text-sm text-white leading-tight whitespace-nowrap">
+        {tech.name}
+      </span>
+    </div>
+  </div>
+);
+
+const fadeMask = {
+  WebkitMaskImage:
+    'linear-gradient(to right, transparent, #000 6%, #000 94%, transparent)',
+  maskImage:
+    'linear-gradient(to right, transparent, #000 6%, #000 94%, transparent)',
+} as const;
+
+/**
+ * A row that slides continuously and loops seamlessly.
+ * Driven by Framer Motion (JS) so it runs regardless of the OS
+ * "reduced motion" setting or any global CSS animation overrides.
+ * Two identical copies + moving by exactly -50% = no visible seam.
+ */
+const MarqueeRow = ({
+  direction = 'left',
+  duration = 32,
+}: {
+  direction?: 'left' | 'right';
+  duration?: number;
 }) => {
-  const meshRef = useRef<THREE.Group>(null);
-  const texture = useLoader(THREE.TextureLoader, logo);
-
-  const radius = 14; // wide orbit
-
-  useFrame((state) => {
-    if (meshRef.current) {
-      const time = state.clock.getElapsedTime();
-      meshRef.current.rotation.y = time * 0.8; // cube spins
-      meshRef.current.position.x = Math.cos(time * 0.2 + (index * Math.PI * 2) / 8) * radius;
-      meshRef.current.position.z = Math.sin(time * 0.2 + (index * Math.PI * 2) / 8) * radius;
-      meshRef.current.position.y = Math.sin(time * 0.5 + index) * 1;
-    }
-  });
-
-  // Cube materials (logo front + back, dark sides)
-  const materials = [
-    new THREE.MeshStandardMaterial({ color: '#111' }), // right
-    new THREE.MeshStandardMaterial({ color: '#111' }), // left
-    new THREE.MeshStandardMaterial({ color: '#111' }), // top
-    new THREE.MeshStandardMaterial({ color: '#111' }), // bottom
-    new THREE.MeshStandardMaterial({ map: texture, transparent: true }), // front logo
-    new THREE.MeshStandardMaterial({ map: texture, transparent: true })  // back logo
-  ];
+  const from = direction === 'left' ? '0%' : '-50%';
+  const to = direction === 'left' ? '-50%' : '0%';
 
   return (
-    <Float speed={2} rotationIntensity={0.6} floatIntensity={0.8}>
-      <group ref={meshRef}>
-        {/* Logo Cube */}
-        <mesh material={materials}>
-          <boxGeometry args={[3, 3, 0.6]} />
-        </mesh>
-        {/* Text below logo */}
-        <Text
-          position={[0, -2.2, 0]} // just under cube
-          fontSize={0.8}
-          color="#ffffff"
-          anchorX="center"
-          anchorY="middle"
-        >
-          {name}
-        </Text>
-      </group>
-    </Float>
-  );
-};
-
-const Scene3D = () => {
-  const technologies = [
-    { name: 'React', logo: '/React.png' },
-    { name: 'HTML5', logo: '/HTML.png' },
-    { name: 'CSS3', logo: '/CSS.png' },
-    { name: 'JavaScript', logo: '/Javascript.png' },
-    { name: 'Tailwind', logo: '/Tailwind.png' },
-    { name: 'Vite', logo: '/vite.png' },
-    { name: 'Figma', logo: '/Figma.png' },
-    { name: 'N8N', logo: '/n8n.png' },
-  ];
-
-  return (
-    <>
-      <ambientLight intensity={1.2} />
-      <directionalLight position={[5, 5, 5]} intensity={2} />
-      <pointLight position={[0, 0, 10]} intensity={1.2} />
-
-      {technologies.map((tech, index) => (
-        <TechLogo key={tech.name} logo={tech.logo} name={tech.name} index={index} />
-      ))}
-    </>
+    <div className="overflow-hidden py-2" style={fadeMask}>
+      <motion.div
+        className="flex w-max"
+        initial={{ x: from }}
+        animate={{ x: to }}
+        transition={{ duration, ease: 'linear', repeat: Infinity }}
+      >
+        {[...technologies, ...technologies].map((tech, i) => (
+          <TechCard key={`${direction}-${i}`} tech={tech} />
+        ))}
+      </motion.div>
+    </div>
   );
 };
 
@@ -90,7 +93,7 @@ const TechCarousel3D = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-8 sm:mb-10 lg:mb-12"
+          className="text-center mb-8 sm:mb-10 lg:mb-14"
         >
           <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">
             <span className="hero-text">Tech Stack</span>
@@ -99,49 +102,12 @@ const TechCarousel3D = () => {
             Technologies and tools I work with to bring ideas to life
           </p>
         </motion.div>
+      </div>
 
-        {/* 3D Carousel for Desktop */}
-        <div className="hidden lg:flex items-center justify-center h-[520px] xl:h-[700px] relative">
-          <Canvas camera={{ position: [0, 0, 22], fov: 70 }}>
-            <Suspense
-              fallback={
-                <mesh>
-                  <boxGeometry args={[1, 1, 1]} />
-                  <meshBasicMaterial color="#4f46e5" />
-                </mesh>
-              }
-            >
-              <Scene3D />
-            </Suspense>
-          </Canvas>
-        </div>
-
-        {/* Tech Grid for Mobile and Tablet */}
-        <div className="lg:hidden grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4 mt-6 sm:mt-10">
-          {[
-            { name: 'React', icon: '/React.png' },
-            { name: 'HTML5', icon: '/HTML.png' },
-            { name: 'CSS3', icon: '/CSS.png' },
-            { name: 'JavaScript', icon: '/Javascript.png' },
-            { name: 'Tailwind', icon: '/Tailwind.png' },
-            { name: 'Vite', icon: '/vite.png' },
-            { name: 'Figma', icon: '/Figma.png' },
-            { name: 'N8N', icon: '/n8n.png' },
-          ].map((tech, index) => (
-            <motion.div
-              key={tech.name}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ scale: 1.05 }}
-              viewport={{ once: true }}
-              className="glass p-3 sm:p-4 rounded-lg text-center interactive min-h-[120px] sm:min-h-[140px] flex flex-col items-center justify-center"
-            >
-              <img src={tech.icon} alt={tech.name} className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-2" />
-              <h3 className="font-semibold text-xs sm:text-sm leading-tight">{tech.name}</h3>
-            </motion.div>
-          ))}
-        </div>
+      {/* Continuous horizontal sliders */}
+      <div className="flex flex-col gap-3 sm:gap-5">
+        <MarqueeRow direction="left" duration={32} />
+        <MarqueeRow direction="right" duration={38} />
       </div>
     </section>
   );

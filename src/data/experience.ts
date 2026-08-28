@@ -14,19 +14,20 @@ export interface Experience {
 export const experiences: Experience[] = [
   {
     id: 'codesquad-fullstack-ai',
-    title: 'Junior Full Stack Developer & AI Automation Enthusiast',
-    company: 'CodeSquad.AI',
+    title: 'Full Stack Developer & AI Automation Specialist',
+    company: 'CodeSquad.LLC',
     location: 'Lahore, Pakistan',
     duration: 'Jan 2025 – Present',
     type: 'full-time',
     description:
-      'Developing scalable full-stack applications and intelligent automation workflows using modern frontend, backend, and AI tools.',
+      'Building scalable full-stack applications, intelligent automation workflows, and automated digital marketing operations across the full product and growth lifecycle.',
     responsibilities: [
-      'Develop and maintain full-stack applications with React.js, Next.js, TypeScript, Tailwind CSS, Django, and FastAPI',
+      'Develop and maintain full-stack applications with React.js, Next.js, TypeScript, Tailwind CSS, Django, and FastAPI — from PostgreSQL database design to deployment',
       'Design and ship user-centric UI/UX by turning Figma and Adobe XD prototypes into responsive production interfaces',
       'Build automation workflows with n8n and Make.com to connect APIs and streamline repetitive business processes',
-      'Collaborate across the full SDLC including requirements, reviews, integrations, testing, and release cycles',
-      'Document design systems, development workflows, and automation strategies for team-wide best practices'
+      'Drive digital marketing through automation — SEO, AEO, GEO, blog and social content, and Google Ads, tracked via Google Analytics in a unified pipeline',
+      'Architect and manage a customized CRM that centralizes marketing workflows, client communication, content scheduling, and reporting',
+      'Collaborate across the full SDLC and document design systems, workflows, and automation strategies for team-wide best practices'
     ],
     technologies: [
       'React.js',
@@ -37,12 +38,16 @@ export const experiences: Experience[] = [
       'FastAPI',
       'PostgreSQL',
       'n8n',
-      'Make.com'
+      'Make.com',
+      'SEO',
+      'Google Ads',
+      'Google Analytics',
+      'CRM'
     ],
     achievements: [
       'Delivered scalable full-stack products from database to deployment',
       'Improved productivity with AI-driven and API-based automation workflows',
-      'Strengthened technical quality and UX through cross-functional collaboration'
+      'Unified development, automation, and digital marketing into one automated growth pipeline'
     ]
   },
   {
@@ -102,7 +107,7 @@ export const experiences: Experience[] = [
   {
     id: 'codesquad-frontend-uiux-intern',
     title: 'Frontend Development Intern & UI/UX Designer',
-    company: 'CodeSquad.AI',
+    company: 'CodeSquad.LLC',
     location: 'Lahore, Pakistan',
     duration: 'Jun 2024 – Dec 2024',
     type: 'internship',

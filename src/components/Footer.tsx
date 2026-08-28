@@ -70,7 +70,7 @@ const Footer = () => {
             <div className="flex items-center space-x-3 mb-4 sm:mb-6">
               <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg overflow-hidden flex-shrink-0">
                 <img
-                  src="/Syed Abdul Qayyum.jpeg"
+                  src="/profile-avatar.png"
                   alt="Syed Abdul Qayyum"
                   className="w-full h-full object-cover"
                 />

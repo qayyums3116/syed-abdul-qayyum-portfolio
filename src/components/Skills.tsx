@@ -1,36 +1,50 @@
 import { motion } from 'framer-motion';
-import { Code, Palette, Wrench, Star } from 'lucide-react';
+import { Code, Server, Bot, Palette, TrendingUp, Wrench } from 'lucide-react';
 import { skills, getSkillsByCategory } from '@/data/skills';
 
 const Skills = () => {
   const categories = [
     {
       id: 'frontend',
-      title: 'Frontend Development',
+      title: 'Frontend',
       icon: Code,
       color: '#61DAFB',
       description: 'Building modern, responsive web applications'
     },
     {
+      id: 'backend',
+      title: 'Backend',
+      icon: Server,
+      color: '#10B981',
+      description: 'APIs, databases, and server-side development'
+    },
+    {
+      id: 'ai',
+      title: 'AI & Automation',
+      icon: Bot,
+      color: '#F59E0B',
+      description: 'Intelligent workflows, LLMs, and process automation'
+    },
+    {
       id: 'design',
-      title: 'UI/UX Design',
+      title: 'UI/UX & Design',
       icon: Palette,
       color: '#F24E1E',
       description: 'Creating beautiful and intuitive user experiences'
     },
     {
-      id: 'tools',
-      title: 'Development Tools',
-      icon: Wrench,
-      color: '#10B981',
-      description: 'Essential tools for modern development workflow'
+      id: 'marketing',
+      title: 'Digital Marketing & SEO',
+      icon: TrendingUp,
+      color: '#EC4899',
+      description: 'Driving digital growth through SEO, ads, and automation'
     },
     {
-      id: 'other',
-      title: 'Other Skills',
-      icon: Star,
+      id: 'tools',
+      title: 'Tools & DevOps',
+      icon: Wrench,
       color: '#8B5CF6',
-      description: 'Additional expertise and soft skills'
+      description: 'Essential tools for modern development workflow'
     }
   ];
 
