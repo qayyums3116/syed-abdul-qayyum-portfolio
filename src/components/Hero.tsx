@@ -1,7 +1,10 @@
 import { motion } from 'framer-motion';
 import { Download, Eye, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import AnimatedBackground from './AnimatedBackground';
+import { lazy, Suspense } from 'react';
+
+// Lazy-loaded so the heavy Three.js bundle is code-split out of the initial load
+const AnimatedBackground = lazy(() => import('./AnimatedBackground'));
 
 const Hero = () => {
   const scrollToSection = (sectionId: string) => {
@@ -16,8 +19,10 @@ const Hero = () => {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 sm:pt-20 pb-8"
     >
-      {/* Animated Background */}
-      <AnimatedBackground />
+      {/* Animated Background (lazy, desktop-only) */}
+      <Suspense fallback={null}>
+        <AnimatedBackground />
+      </Suspense>
 
       {/* Content */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

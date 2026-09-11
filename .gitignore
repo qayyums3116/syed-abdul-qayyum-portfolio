@@ -23,6 +23,5 @@ dist-ssr
 *.sln
 *.sw?
 
-# Local-only project videos (not pushed to GitHub)
-/public/projects/*.mp4
-/public/projects/*.mov
+# Oversized source video kept local (not used by the site)
+/public/projects/Energybits Automation Make.com.mp4
