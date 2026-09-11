@@ -21,26 +21,65 @@ const Hero = () => {
 
       {/* Content */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Responsive layout */}
-        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
-          {/* Text Content */}
+        {/* Responsive layout:
+            Mobile order -> Greeting, Picture, Name + Text.
+            Desktop -> text (greeting + name + text) on the left column,
+            picture centered on the right column. */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-x-12 lg:gap-y-0 items-center">
+          {/* Greeting */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="order-1 lg:col-start-1 lg:row-start-1 text-center lg:text-left mb-1 sm:mb-2 lg:mb-3"
+          >
+            <span className="text-primary font-medium text-base sm:text-lg">
+              👋 Hello, I'm
+            </span>
+          </motion.div>
+
+          {/* Profile Image */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="order-2 lg:col-start-2 lg:row-start-1 lg:row-span-2 relative flex justify-center lg:justify-end w-full"
+          >
+            <div className="relative w-full max-w-[220px] xs:max-w-xs sm:max-w-sm lg:max-w-md">
+              <motion.div
+                animate={{ y: [0, -16, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+                className="relative"
+              >
+                {/* Rotating gradient glow behind the frame */}
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
+                  className="absolute -inset-3 sm:-inset-4 rounded-full bg-gradient-to-tr from-primary via-accent to-primary opacity-60 blur-xl"
+                />
+
+                {/* Gradient ring border */}
+                <div className="relative aspect-square rounded-full p-[3px] sm:p-1 bg-gradient-to-br from-primary via-accent to-primary glow-primary">
+                  {/* Inner circle with soft radial backdrop so the dark suit stands out */}
+                  <div className="w-full h-full rounded-full overflow-hidden bg-[radial-gradient(circle_at_50%_28%,hsl(220_26%_15%),hsl(220_26%_6%))]">
+                    <img
+                      src="/profile-hero.png"
+                      alt="Syed Abdul Qayyum - Full Stack Developer, AI Automation Enthusiast & UI/UX Designer"
+                      className="w-full h-full object-cover object-top drop-shadow-2xl"
+                    />
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
+
+          {/* Name + Text */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center lg:text-left w-full"
+            className="order-3 lg:col-start-1 lg:row-start-2 text-center lg:text-left w-full mt-2 lg:mt-0"
           >
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="mb-3 sm:mb-4"
-            >
-              <span className="text-primary font-medium text-base sm:text-lg">
-                👋 Hello, I'm
-              </span>
-            </motion.div>
-
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -110,42 +149,6 @@ const Hero = () => {
                 <span>Contact Me</span>
               </Button>
             </motion.div>
-          </motion.div>
-
-          {/* Profile Image */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative flex justify-center lg:justify-end w-full mt-6 lg:mt-0"
-          >
-            <div className="relative w-full max-w-[260px] xs:max-w-xs sm:max-w-sm lg:max-w-md">
-              <motion.div
-                animate={{ y: [0, -16, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-                className="relative"
-              >
-                {/* Rotating gradient glow behind the frame */}
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
-                  className="absolute -inset-3 sm:-inset-4 rounded-full bg-gradient-to-tr from-primary via-accent to-primary opacity-60 blur-xl"
-                />
-
-                {/* Gradient ring border */}
-                <div className="relative aspect-square rounded-full p-[3px] sm:p-1 bg-gradient-to-br from-primary via-accent to-primary glow-primary">
-                  {/* Inner circle with soft radial backdrop so the dark suit stands out */}
-                  <div className="w-full h-full rounded-full overflow-hidden bg-[radial-gradient(circle_at_50%_28%,hsl(220_26%_15%),hsl(220_26%_6%))]">
-                    <img
-                      src="/profile-hero.png"
-                      alt="Syed Abdul Qayyum - Full Stack Developer, AI Automation Enthusiast & UI/UX Designer"
-                      className="w-full h-full object-cover object-top drop-shadow-2xl"
-                    />
-                  </div>
-                </div>
-
-              </motion.div>
-            </div>
           </motion.div>
         </div>
       </div>

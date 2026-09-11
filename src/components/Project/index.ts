@@ -12,6 +12,7 @@ export interface Project {
   features: string[];
   image?: string;
   video?: string;
+  videoPlaybackRate?: number; // thumbnail playback speed (e.g. 1.5)
   liveUrl?: string;
   githubUrl?: string;
   status: 'completed' | 'in-progress' | 'planned';

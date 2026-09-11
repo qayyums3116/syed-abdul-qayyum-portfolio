@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local-only project videos (not pushed to GitHub)
+/public/projects/*.mp4
+/public/projects/*.mov
