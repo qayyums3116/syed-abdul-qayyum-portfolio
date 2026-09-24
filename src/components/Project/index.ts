@@ -1,6 +1,7 @@
 import { webProjects } from './WebProjects';
 import { uiProjects } from './UiProjects';
 import { n8nProjects } from './N8nProjects';
+import { makeProjects } from './MakeProjects';
 
 export interface Project {
   id: string;
@@ -16,12 +17,13 @@ export interface Project {
   liveUrl?: string;
   githubUrl?: string;
   status: 'completed' | 'in-progress' | 'planned';
-  category: 'web-app' | 'ui-design' | 'mobile' | 'ai' | 'n8n';
+  category: 'web-app' | 'ui-design' | 'mobile' | 'ai' | 'n8n' | 'make';
 }
 
 // Combine all projects
 export const projects: Project[] = [
   ...webProjects,
+  ...makeProjects,
   ...uiProjects,
   ...n8nProjects,
 ];
@@ -36,4 +38,4 @@ export const getProjectsByCategory = (category: string): Project[] => {
 };
 
 // Export individual project arrays for easy access
-export { webProjects, uiProjects, n8nProjects };
+export { webProjects, uiProjects, n8nProjects, makeProjects };

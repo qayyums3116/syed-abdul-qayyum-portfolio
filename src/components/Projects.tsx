@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Github, Eye, Code, Palette, Workflow, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Github, Eye, Code, Palette, Workflow, Zap, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Project } from '@/components/Project';
@@ -13,6 +13,7 @@ const categoryIcons = {
   'web-app': Code,
   'ui-design': Palette,
   'n8n': Workflow,
+  'make': Zap,
   'ai': Code,
 } as const;
 
@@ -20,6 +21,7 @@ const categoryColors = {
   'web-app': '#61DAFB',
   'ui-design': '#F24E1E',
   'n8n': '#10B981',
+  'make': '#A855F7',
   'ai': '#FF6B35',
 } as const;
 
@@ -30,6 +32,13 @@ const sections = [
     tagline:
       'Modern, responsive, and scalable applications built with React, Vite, and Tailwind CSS.',
     filter: 'web-app',
+  },
+  {
+    id: 'make-projects',
+    title: 'Make.com Automation Projects',
+    tagline:
+      'Make.com scenarios that run the CRM, content, SEO/AEO/GEO, and digital-marketing analytics for real businesses — fully automated.',
+    filter: 'make',
   },
   {
     id: 'uiux-projects',

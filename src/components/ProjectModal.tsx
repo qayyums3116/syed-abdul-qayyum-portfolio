@@ -35,6 +35,8 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
         return 'bg-purple-500/20 text-purple-400 border-purple-500/50';
       case 'n8n':
         return 'bg-green-500/20 text-green-400 border-green-500/50';
+      case 'make':
+        return 'bg-purple-500/20 text-purple-400 border-purple-500/50';
       case 'ai':
         return 'bg-orange-500/20 text-orange-400 border-orange-500/50';
       default:
@@ -178,6 +180,18 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
               >
                 <Eye className="w-4 h-4 mr-2" />
                 View Design
+              </Button>
+            )}
+
+            {/* Make.com Automation Projects: Visit the live site it powers */}
+            {project.category === 'make' && project.liveUrl && (
+              <Button
+                onClick={() => window.open(project.liveUrl, '_blank')}
+                className="w-full"
+                variant="default"
+              >
+                <ExternalLink className="w-4 h-4 mr-2" />
+                Visit Website
               </Button>
             )}
 
