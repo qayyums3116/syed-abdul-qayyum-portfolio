@@ -28,7 +28,9 @@ const categoryColors = {
 const sections = [
   {
     id: 'web-projects',
-    title: 'Web-Based Projects',
+    title: 'Full Stack Web-Based Projects',
+    tabLabel: 'Full Stack Web Based Projects',
+    icon: Code,
     tagline:
       'Modern, responsive, and scalable applications built with React, Vite, and Tailwind CSS.',
     filter: 'web-app',
@@ -36,23 +38,29 @@ const sections = [
   {
     id: 'make-projects',
     title: 'Make.com Automation Projects',
+    tabLabel: 'Make.com Projects',
+    icon: Zap,
     tagline:
       'Make.com scenarios that run the CRM, content, SEO/AEO/GEO, and digital-marketing analytics for real businesses — fully automated.',
     filter: 'make',
   },
   {
-    id: 'uiux-projects',
-    title: 'UI/UX Design Projects',
-    tagline:
-      'Creative and user-centered design projects crafted in Figma and Adobe XD.',
-    filter: 'ui-design',
-  },
-  {
     id: 'n8n-projects',
     title: 'N8N Automation Projects',
+    tabLabel: 'n8n Projects',
+    icon: Workflow,
     tagline:
       'Automations and workflows built with N8N to simplify processes and save time.',
     filter: 'n8n',
+  },
+  {
+    id: 'uiux-projects',
+    title: 'UI/UX Design Projects',
+    tabLabel: 'UI/UX Projects',
+    icon: Palette,
+    tagline:
+      'Creative and user-centered design projects crafted in Figma and Adobe XD.',
+    filter: 'ui-design',
   },
 ];
 
@@ -300,6 +308,7 @@ const ProjectSection = ({
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeFilter, setActiveFilter] = useState(sections[0].filter);
 
   const openProjectModal = (project: Project) => {
     setSelectedProject(project);
@@ -311,8 +320,17 @@ const Projects = () => {
     setSelectedProject(null);
   };
 
+  const activeSection = sections.find((s) => s.filter === activeFilter) ?? sections[0];
+
+  const selectFilter = (filter: string) => {
+    setActiveFilter(filter);
+    document
+      .getElementById('projects')
+      ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   return (
-    <section id="projects" className="py-10 sm:py-14 md:py-20 relative">
+    <section id="projects" className="py-10 sm:py-14 md:py-20 relative scroll-mt-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Global Section Heading */}
         <motion.div
@@ -320,7 +338,7 @@ const Projects = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-10 sm:mb-14 lg:mb-20"
+          className="text-center mb-8 sm:mb-10 lg:mb-12"
         >
           <h2 className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 lg:mb-6">
             <span className="hero-text">Featured Projects</span>
@@ -330,14 +348,41 @@ const Projects = () => {
           </p>
         </motion.div>
 
-        {sections.map((section, secIndex) => (
-          <ProjectSection
-            key={section.id}
-            section={section}
-            secIndex={secIndex}
-            onOpen={openProjectModal}
-          />
-        ))}
+        {/* Filter Tabs */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-10 sm:mb-12 lg:mb-16"
+        >
+          {sections.map((section) => {
+            const Icon = section.icon;
+            const isActive = section.filter === activeFilter;
+            return (
+              <button
+                key={section.filter}
+                onClick={() => selectFilter(section.filter)}
+                className={`flex items-center gap-1.5 sm:gap-2 rounded-full border px-3 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-medium transition-all duration-300 ${
+                  isActive
+                    ? 'bg-primary text-primary-foreground border-primary glow-primary scale-[1.03]'
+                    : 'glass border-border/50 text-muted-foreground hover:text-foreground hover:border-primary/40'
+                }`}
+              >
+                <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" />
+                <span>{section.tabLabel}</span>
+              </button>
+            );
+          })}
+        </motion.div>
+
+        {/* Active category (remounts on change to reset pagination + animate in) */}
+        <ProjectSection
+          key={activeSection.filter}
+          section={activeSection}
+          secIndex={0}
+          onOpen={openProjectModal}
+        />
 
         {/* Project Detail Modal */}
         <ProjectModal

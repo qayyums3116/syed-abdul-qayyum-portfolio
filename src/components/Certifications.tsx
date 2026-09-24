@@ -6,7 +6,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
-import { Card, CardContent } from '@/components/ui/card';
 import Autoplay from 'embla-carousel-autoplay';
 import { useCallback } from 'react';
 
@@ -73,25 +72,19 @@ const Certifications = () => {
               {certificates.map((cert) => (
                 <CarouselItem key={cert.id} className="basis-full">
                   <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
+                    initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.3 }}
+                    transition={{ delay: 0.2 }}
                     viewport={{ once: true }}
-                    className="flex justify-center px-1 sm:px-2 lg:px-4"
+                    className="flex items-center justify-center px-2 sm:px-4"
                   >
-                    <Card className="glass hover:shadow-2xl transition-all duration-500 group hover:scale-[1.01] interactive w-fit max-w-full mx-auto">
-                      <CardContent className="p-3 sm:p-5 lg:p-8 flex items-center justify-center">
-                        {/* Picture frame that hugs each certificate and stays centered */}
-                        <div className="w-fit max-w-full mx-auto rounded-lg border-4 sm:border-[6px] lg:border-8 border-gray-900 bg-[#e4dcd4] p-1.5 sm:p-2 shadow-xl">
-                          <img
-                            src={cert.image}
-                            alt={`Certificate ${cert.id}`}
-                            loading="lazy"
-                            className="block w-auto h-auto max-w-full max-h-[48vh] sm:max-h-[58vh] lg:max-h-[560px] object-contain rounded-sm mx-auto"
-                          />
-                        </div>
-                      </CardContent>
-                    </Card>
+                    {/* All certificates are square and already framed — show them at one uniform size */}
+                    <img
+                      src={cert.image}
+                      alt={`Certificate ${cert.id}`}
+                      loading="lazy"
+                      className="w-full max-w-[280px] xs:max-w-[340px] sm:max-w-[440px] md:max-w-[500px] lg:max-w-[560px] aspect-square object-contain rounded-xl shadow-2xl mx-auto transition-transform duration-500 hover:scale-[1.02]"
+                    />
                   </motion.div>
                 </CarouselItem>
               ))}
