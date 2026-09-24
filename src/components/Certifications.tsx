@@ -23,10 +23,11 @@ const Certifications = () => {
   );
 
   const certificates = [
-    { id: 1, image: '/Certificates/1.png' },
-    { id: 2, image: '/Certificates/2.png' },
-    { id: 3, image: '/Certificates/3.png' },
-    { id: 4, image: '/Certificates/4.png' },
+    { id: 1, image: '/Certificates/Concordia College Certificate.png' },
+    { id: 2, image: '/Certificates/1.png' },
+    { id: 3, image: '/Certificates/2.png' },
+    { id: 4, image: '/Certificates/3.png' },
+    { id: 5, image: '/Certificates/4.png' },
   ];
 
   return (
