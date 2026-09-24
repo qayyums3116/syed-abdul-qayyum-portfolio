@@ -79,18 +79,16 @@ const Certifications = () => {
                     viewport={{ once: true }}
                     className="flex justify-center px-1 sm:px-2 lg:px-4"
                   >
-                    <Card className="glass hover:shadow-2xl transition-all duration-500 group hover:scale-[1.01] interactive w-full max-w-3xl">
-                      <CardContent className="p-2 xs:p-3 sm:p-4 md:p-6 lg:p-8 flex justify-center items-center">
-                        {/* Frame for Certificate */}
-                        <div className="w-full h-[200px] xs:h-[240px] sm:h-[300px] md:h-[380px] lg:h-[450px] xl:h-[500px] flex items-center justify-center overflow-hidden rounded-lg border-2 xs:border-3 sm:border-4 md:border-6 lg:border-8 border-gray-900 shadow-xl">
-                          {/* Inner mat layer */}
-                          <div className="w-[96%] h-[96%] flex items-center justify-center rounded-md bg-[#e4dcd4] border xs:border-2 sm:border-3 md:border-4 border-gray-200">
-                            <img
-                              src={cert.image}
-                              alt={`Certificate ${cert.id}`}
-                              className="max-h-full max-w-full object-contain shadow-sm"
-                            />
-                          </div>
+                    <Card className="glass hover:shadow-2xl transition-all duration-500 group hover:scale-[1.01] interactive w-fit max-w-full mx-auto">
+                      <CardContent className="p-3 sm:p-5 lg:p-8 flex items-center justify-center">
+                        {/* Picture frame that hugs each certificate and stays centered */}
+                        <div className="w-fit max-w-full mx-auto rounded-lg border-4 sm:border-[6px] lg:border-8 border-gray-900 bg-[#e4dcd4] p-1.5 sm:p-2 shadow-xl">
+                          <img
+                            src={cert.image}
+                            alt={`Certificate ${cert.id}`}
+                            loading="lazy"
+                            className="block w-auto h-auto max-w-full max-h-[48vh] sm:max-h-[58vh] lg:max-h-[560px] object-contain rounded-sm mx-auto"
+                          />
                         </div>
                       </CardContent>
                     </Card>
